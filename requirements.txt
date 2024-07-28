@@ -4,11 +4,10 @@ Django
 django
 django
 django
-django-environ
 djangorestframework
 environ
 Markdown
 pillow
 pip
 sqlparse
-tzdata
+tzdata 
