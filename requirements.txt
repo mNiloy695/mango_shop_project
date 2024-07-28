@@ -1,13 +1,11 @@
-Package
 asgiref
 Django
-django
-django
-django
+django-cors-headers
+django-environ
+django-filter
 djangorestframework
 environ
 Markdown
 pillow
-pip
 sqlparse
-tzdata 
+tzdata
