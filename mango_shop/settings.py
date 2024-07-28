@@ -34,7 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 CORS_ALLOW_ALL_ORIGINS= True
-
+CSRF_TRUSTED_ORIGINS = ['https://mango-shop-project-2.onrender.com/']
 
 # Application definition
 
