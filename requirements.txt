@@ -1,0 +1,13 @@
+Package
+asgiref
+Django
+django
+django
+django
+djangorestframework
+environ
+Markdown
+pillow
+pip
+sqlparse
+tzdata
