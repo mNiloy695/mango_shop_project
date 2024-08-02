@@ -21,17 +21,6 @@ class PurchaseSerializerViewSet(viewsets.ModelViewSet):
     serializer_class=serializers.PurchaseModelSerializer
     filter_backends=[PurchaseModelFilterForSpecificUser,filters.SearchFilter]
     search_fields=['PurchaseModel__id']
-    # def get_queryset(self):
-    #     return models.PurchaseModel.objects.all()
-    # def post(self,request,*args,**kwargs):
-    #     serializer=self.serializer_class(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response("your data succesfully post")
-    #     else:
-    #         return Response(serializer.errors)
- 
-    # def put(self,request):
 
 class ReviewFilterForSpecificMango(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):

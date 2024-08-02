@@ -19,6 +19,7 @@ class AddressModel(models.Model):
     def __str__(self):
         return self.city
 
+
 class PurchaseModel(models.Model):
     mango=models.ForeignKey(MangoModel,on_delete=models.SET_NULL,null=True,blank=True)
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)

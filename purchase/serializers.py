@@ -27,7 +27,7 @@ class PurchaseModelSerializer(serializers.ModelSerializer):
         if quantity<2:
             raise serializers.ValidationError({'error':"You need to buy at least 2 kg"})
         
-        purchase=models.PurchaseModel.objects.get_or_create(mango=mango,user=user,order_status=order_status,quantity=quantity,price=price,address=address)
+        purchase=models.PurchaseModel(mango=mango,user=user,order_status=order_status,quantity=quantity,price=price,address=address)
         man=models.MangoModel.objects.get(id=mango.id)
         
 
