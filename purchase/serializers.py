@@ -29,7 +29,7 @@ class PurchaseModelSerializer(serializers.ModelSerializer):
         
         purchase=models.PurchaseModel.objects.get_or_create(mango=mango,user=user,order_status=order_status,quantity=quantity,price=price,address=address)
         man=models.MangoModel.objects.get(id=mango.id)
-        purchase.save()
+        
 
         if  purchase.order_status=="pending":
             man.weight-=purchase.quantity
