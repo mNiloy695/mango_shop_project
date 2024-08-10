@@ -13,6 +13,8 @@ urlpatterns = [
    
     path('',include(router.urls)),
     path('purchase/',views.PurchaseSerializerViewSet.as_view(),name="purchase"),
+    path('purchase/<int:pk>/',views.PurchaseDetails.as_view(),name="purchase"),
+
 ]
 
 # urlpatterns = [

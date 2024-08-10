@@ -8,6 +8,7 @@ from . import models
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework import status
+from django.http import Http404
 class PurchaseModelFilterForSpecificUser(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         user_id=request.query_params.get('user_id')
@@ -28,6 +29,31 @@ class PurchaseSerializerViewSet(APIView):
            serializer.save()
            return Response(serializer.data,status=status.HTTP_201_CREATED)
        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+class PurchaseDetails(APIView):
+    def get_object(self,pk):
+        try:
+            return models.PurchaseModel.objects.get(pk=pk)
+        except models.PurchaseModel.DoesNotExist:
+            return Http404
+    def get(self,request,pk,fomate=None):
+        purchase=self.get_object(pk)
+        serializer=serializers.PurchaseModelSerializer(purchase)
+        return Response(serializer.data)
+    def put(self,request,pk,fomate=None):
+        purchase=self.get_object(pk)
+        serializer=serializers.PurchaseModelSerializer(purchase,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    def delete(self,request,pk,formate=None):
+        purchase=self.get_object(pk)
+        purchase.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
 class ReviewFilterForSpecificMango(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         mango_id=request.query_params.get('mango_id')
