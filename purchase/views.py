@@ -17,7 +17,7 @@ class PurchaseModelFilterForSpecificUser(filters.BaseFilterBackend):
         return queryset
 
 class PurchaseSerializerViewSet(APIView):
-   def get(self,request,format=None):
+   def get(self,request,format=None):   
        print("get method")
        purchases=models.PurchaseModel.objects.all()
        serializer=serializers.PurchaseModelSerializer(purchases,many=True)
