@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import sqlite3
 from pathlib import Path
 import environ
 
@@ -156,3 +156,4 @@ EMAIL_PORT = 587  # Port for TLS
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env("EMAIL")  # Your Gmail address
 EMAIL_HOST_PASSWORD = env("PASSWORD")
+print(sqlite3.sqlite_version)
