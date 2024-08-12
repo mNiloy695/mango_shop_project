@@ -2,6 +2,7 @@ asgiref
 Django
 django-cors-headers
 django-environ
+dj_database_url
 django-filter
 djangorestframework
 environ

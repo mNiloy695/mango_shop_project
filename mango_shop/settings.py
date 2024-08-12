@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import sqlite3
 from pathlib import Path
 import environ
+import dj_database_url
 
 # Initialize environ
 env = environ.Env()
@@ -101,10 +102,10 @@ WSGI_APPLICATION = 'mango_shop.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default':dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://mango_shop_user:QMcQBscTcQJZzRQEgt2mYjRfNIvwBfG0@dpg-cqt0mrrqf0us7395ah9g-a.oregon-postgres.render.com/mango_shop',
+    )
 }
 
 
