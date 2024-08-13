@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'mango_shop.wsgi.application'
 DATABASES = {
     'default':dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://mango_shop_user:QMcQBscTcQJZzRQEgt2mYjRfNIvwBfG0@dpg-cqt0mrrqf0us7395ah9g-a.oregon-postgres.render.com/mango_shop',
+        default='postgresql://mango_shop_project_2_user:IDv3vwHase24IiAuYYvlvCjfpDArnRTK@dpg-cqtfjllds78s739kuqpg-a.oregon-postgres.render.com/mango_shop_project_2',
     )
 }
 
