@@ -1,12 +1,16 @@
+antiorm
 asgiref
+db
+dj-database-url
 Django
 django-cors-headers
 django-environ
-dj_database_url
 django-filter
 djangorestframework
 environ
 Markdown
 pillow
+psycopg2-binary
 sqlparse
+typing_extensions
 tzdata
