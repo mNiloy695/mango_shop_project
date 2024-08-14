@@ -54,8 +54,11 @@ class PurchaseDetails(APIView):
         purchase=self.get_object(pk)
         serializer=serializers.PurchaseModelSerializer(purchase,data=request.data)
         if serializer.is_valid():
-            mango=serializer.validated_data.get('mango')
+            
+            mango=MangoModel.objects.get(id=purchase.id)
             order_status=serializer.validated_data.get('order_status')
+            print(purchase.order_status)
+            print(order_status)
             if(purchase.order_status!="cancelled" and order_status=="cancelled"):
                mango.weight+=purchase.quantity
                mango.save()
