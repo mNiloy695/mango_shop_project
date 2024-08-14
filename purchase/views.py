@@ -35,9 +35,7 @@ class PurchaseSerializerViewSet(APIView):
            if(order_status=="pending"):
                mango.weight-=quantity
                mango.save()
-           elif(order_status=="cancelled"):
-               mango.weight+=quantity
-               mango.save()           
+                   
            serializer.save()
            return Response(serializer.data,status=status.HTTP_201_CREATED)
        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
@@ -56,6 +54,11 @@ class PurchaseDetails(APIView):
         purchase=self.get_object(pk)
         serializer=serializers.PurchaseModelSerializer(purchase,data=request.data)
         if serializer.is_valid():
+            mango=serializer.validated_data.get('mango')
+            order_status=serializer.validated_data.get('order_status')
+            if(purchase.order_status!="cancelled" and order_status=="cancelled"):
+               mango.weight+=purchase.quantity
+               mango.save()
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
