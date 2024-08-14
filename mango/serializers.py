@@ -13,6 +13,8 @@ class MangoSerializer(serializers.ModelSerializer):
     class Meta:
         model=models.MangoModel
         fields='__all__'
+    
+        
 
 
 

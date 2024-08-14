@@ -9,6 +9,7 @@ from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework import status
 from django.http import Http404
+from mango.models import MangoModel
 class PurchaseModelFilterForSpecificUser(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         user_id=request.query_params.get('user_id')
@@ -26,6 +27,17 @@ class PurchaseSerializerViewSet(APIView):
        purchase=request.data
        serializer=serializers.PurchaseModelSerializer(data=purchase)
        if serializer.is_valid():
+           mango=serializer.validated_data.get('mango')
+           print(mango)
+        #    mango=MangoModel.objects.get(id=id)
+           quantity=serializer.validated_data.get('quantity')
+           order_status=serializer.validated_data.get('order_status')
+           if(order_status=="pending"):
+               mango.weight-=quantity
+               mango.save()
+           elif(order_status=="cancelled"):
+               mango.weight+=quantity
+               mango.save()           
            serializer.save()
            return Response(serializer.data,status=status.HTTP_201_CREATED)
        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
