@@ -68,7 +68,6 @@ class PurchaseDetails(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-
 class ReviewFilterForSpecificMango(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         mango_id=request.query_params.get('mango_id')
@@ -79,7 +78,6 @@ class ReviewSerializerViewSet(viewsets.ModelViewSet):
     queryset=models.Review.objects.all()
     serializer_class=serializers.ReviewModelSerializer
     filter_backends=[ReviewFilterForSpecificMango]
-
 
 class AddressFilterForSpecificUser(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):

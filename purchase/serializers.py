@@ -41,7 +41,6 @@ class PurchaseModelSerializer(serializers.ModelSerializer):
 # review  serializer
 
 class ReviewModelSerializer(serializers.ModelSerializer):
-    reviewer=serializers.StringRelatedField(many=False)
     class Meta:
         model=models.Review
         fields='__all__'
