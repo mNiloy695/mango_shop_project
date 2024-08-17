@@ -58,7 +58,7 @@ class PurchaseDetails(APIView):
         serializer=serializers.PurchaseModelSerializer(purchase,data=request.data)
         if serializer.is_valid():
             
-            mango=serializer.validated_data.get('mango')
+            mango= purchase.mango
             order_status=serializer.validated_data.get('order_status')
             print(purchase.order_status)
             print(order_status)
