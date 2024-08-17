@@ -8,7 +8,7 @@ class AddressSerializer(serializers.ModelSerializer):
         model=models.AddressModel
         fields='__all__'
 class PurchaseModelSerializer(serializers.ModelSerializer):
-    mango=serializers.StringRelatedField(many=False)
+    # mango=serializers.StringRelatedField(many=False)
     # order_status=serializers.StringRelatedField(many=False)
     class Meta:
         model=models.PurchaseModel
