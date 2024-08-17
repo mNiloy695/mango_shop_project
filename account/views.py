@@ -46,9 +46,9 @@ def activate(request,uid64,token):
     if user is not None and default_token_generator.check_token(user,token):
         user.is_active=True
         user.save()
-        return redirect('login')
+        return redirect('login.html')
     else:
-        return redirect('registration')
+        return redirect('registration.html')
 
 
 #user login viewset
