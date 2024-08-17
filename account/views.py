@@ -79,10 +79,10 @@ class UserLogoutViewSet(APIView):
 class UserSerializerViewSetForChecking(APIView):
     serializer_class = serializers.UserSerialization
     def get(self, request):
-        username = request.query_params.get('username')
+        user_id = request.query_params.get('user_id')
 
         try:
-            user = User.objects.get(username=username)
+            user = User.objects.get(id=user_id)
             serializer = self.serializer_class(user)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except User.DoesNotExist:
