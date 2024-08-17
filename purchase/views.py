@@ -10,18 +10,21 @@ from rest_framework import filters
 from rest_framework import status
 from django.http import Http404
 from mango.models import MangoModel
-class PurchaseModelFilterForSpecificUser(filters.BaseFilterBackend):
-    def filter_queryset(self, request, queryset, view):
-        user_id=request.query_params.get('user_id')
+class PurchaseModelFilterForSpecificUser:
+    @staticmethod
+    def filter_queryset(queryset, user_id):
         if user_id:
             return queryset.filter(user=user_id)
         return queryset
 
 class PurchaseSerializerViewSet(APIView):
+   permission_classes=[permissions.IsAuthenticated]
    def get(self,request,format=None):   
        print("get method")
-       purchases=models.PurchaseModel.objects.all()
-       serializer=serializers.PurchaseModelSerializer(purchases,many=True)
+       user_id = request.query_params.get('user_id')
+       purchases =models.PurchaseModel.objects.all()
+       filtered_purchases = PurchaseModelFilterForSpecificUser.filter_queryset(purchases, user_id)
+       serializer =serializers.PurchaseModelSerializer(filtered_purchases, many=True)
        return Response(serializer.data)
    def post(self,request,format=None):
        purchase=request.data

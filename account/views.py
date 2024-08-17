@@ -46,9 +46,9 @@ def activate(request,uid64,token):
     if user is not None and default_token_generator.check_token(user,token):
         user.is_active=True
         user.save()
-        return redirect('login.html')
+        return redirect('https://mniloy695.github.io/mango_shop/login.html')
     else:
-        return redirect('registration.html')
+        return redirect('https://mniloy695.github.io/mango_shop/registration.html')
 
 
 #user login viewset
