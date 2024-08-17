@@ -25,7 +25,7 @@ class CategorySpecificMangoViewSet(filters.BaseFilterBackend):
 
 
 class MangoPagination(PageNumberPagination):
-    page_size=15
+    page_size=16
     page_size_query_param=page_size
     max_page_size=20
 class MangoSerializerViewSet(viewsets.ModelViewSet):
