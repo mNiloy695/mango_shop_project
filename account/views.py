@@ -80,12 +80,17 @@ class UserSerializerViewSetForChecking(APIView):
     serializer_class = serializers.UserSerialization
     def get(self, request):
         user_id = request.query_params.get('user_id')
+        if(user_id):
+             try:
+               user = User.objects.get(id=user_id)
+               serializer = self.serializer_class(user)
+               return Response(serializer.data, status=status.HTTP_200_OK)
+             except User.DoesNotExist:
+              return Response(status=status.HTTP_404_NOT_FOUND)
+        else:
+            user=User.objects.all()
+            serializer=self.serializer_class(user,many=True)
+            return Response(serializer.data,status=status.HTTP_200_OK)
 
-        try:
-            user = User.objects.get(id=user_id)
-            serializer = self.serializer_class(user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        except User.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
   
 
