@@ -10,7 +10,9 @@ djangorestframework
 environ
 Markdown
 pillow
+psycopg-binary
 psycopg2-binary
 sqlparse
 typing_extensions
 tzdata
+whitenoise
