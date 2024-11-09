@@ -25,7 +25,7 @@ class UserCreationViewSet(APIView):
             user=serializer.save()
             token=default_token_generator.make_token(user)
             uid=urlsafe_base64_encode(force_bytes(user.pk))
-            confirmation_link=f'https://mango-shop-project-2.onrender.com/user/activate/{uid}/{token}/'
+            confirmation_link=f'https://mango-shop-ten.vercel.app/user/activate/{uid}/{token}/'
             subject="Confirmation Mail"
 
             body=render_to_string('confirmation_mail.html',{'confirmation_link':confirmation_link})

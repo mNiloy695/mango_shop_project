@@ -34,7 +34,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','.vercel.app']
 CORS_ORIGIN_ALLOW_ALL = True
-CSRF_TRUSTED_ORIGINS = ['https://mango-shop-project-2.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://mango-shop-ten.vercel.app']
 
 # Application definition
 
